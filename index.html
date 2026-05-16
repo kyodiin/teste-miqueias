@@ -300,7 +300,35 @@ src="https://www.facebook.com/tr?id=1323793426343765&ev=PageView&noscript=1"/></
 <body>
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="ann-bar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="vertical-align:middle;margin-right:6px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><svg width="10" height="10" viewBox="0 0 10 10" style="vertical-align:middle;margin-right:6px"><circle cx="5" cy="5" r="5" fill="#ff4444"/></svg>OFERTA ESPECIAL DISPONÍVEL SOMENTE HOJE, 15/05/2026</div>
+<div class="ann-bar">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+  <span style="letter-spacing:.5px;">&#128308; OFERTA ESPECIAL — EXPIRA EM:&nbsp;</span>
+  <span id="countdown" style="font-size:16px;font-weight:900;letter-spacing:2px;color:#FFD700;min-width:58px;display:inline-block;text-align:center;">10:00</span>
+</div>
+<script>
+(function(){
+  var key = 'cdEnd_offer';
+  var stored = localStorage.getItem(key);
+  var end;
+  if(stored){
+    end = parseInt(stored,10);
+    if(Date.now() > end){ end = Date.now() + 10*60*1000; localStorage.setItem(key, end); }
+  } else {
+    end = Date.now() + 10*60*1000;
+    localStorage.setItem(key, end);
+  }
+  var el = document.getElementById('countdown');
+  function tick(){
+    var diff = Math.max(0, end - Date.now());
+    var m = Math.floor(diff/60000);
+    var s = Math.floor((diff%60000)/1000);
+    el.textContent = (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    if(diff > 0){ setTimeout(tick, 500); }
+    else { el.textContent = '00:00'; el.style.color='#ff6b6b'; }
+  }
+  tick();
+})();
+</script>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
