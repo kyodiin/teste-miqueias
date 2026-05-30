@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Diagnóstico Articular — Protocolo Noturno</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','928159323580363');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=928159323580363&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- VTurb Player Script -->
+<script type="text/javascript">
+var s=document.createElement("script");
+s.src="https://scripts.converteai.net/c0a18077-4076-41e6-a809-638937f1dd77/players/6a19840bb7169516c91f433c/v4/player.js";
+s.async=!0;document.head.appendChild(s);
+</script>
+<!-- End VTurb Player Script -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+:root {
+  --navy:        #0C2B3D;
+  --navy-mid:    #164D6E;
+  --navy-light:  #E4EFF6;
+  --teal:        #1A7A8C;
+  --teal-mid:    #229AB0;
+  --teal-light:  #D0ECF2;
+  --amber:       #C47C18;
+  --amber-dark:  #9E6010;
+  --amber-light: #FEF0D6;
+  --coral:       #BE3D32;
+  --coral-light: #FCEAE7;
+  --sage:        #33785A;
+  --sage-light:  #DCF0E6;
+  --cream:       #F2EDE3;
+  --white:       #FFFFFF;
+  --text:        #16161E;
+  --text-mid:    #3D4459;
+  --text-muted:  #7A82A0;
+  --border:      #D8D1C6;
+  --border-mid:  #C2BAB0;
+  --font:        'Poppins', sans-serif;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top:    env(safe-area-inset-top, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+.hidden { display: none !important; }
+img, video { max-width: 100%; }
+
+/* ============================================================
+   BARRA DE PROGRESSO DO QUIZ
+   ============================================================ */
+#top-bar {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  padding: calc(12px + var(--safe-top)) 20px 12px;
+}
+.tb-inner { max-width: 680px; margin: 0 auto; }
+.tb-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.tb-logo { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--navy); }
+.tb-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.tb-spacer { flex: 1; }
+.tb-counter { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.tb-track { background: var(--teal-light); border-radius: 99px; height: 6px; overflow: hidden; }
+.tb-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-mid)); border-radius: 99px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+#quiz-wrap { max-width: 680px; margin: 0 auto; padding: 20px 14px 80px; }
+
+.q-card {
+  background: var(--white); border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 18px rgba(0,0,0,0.07);
+  overflow: hidden; animation: qIn 0.28s ease both;
+}
+@keyframes qIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.q-block-row { padding: 20px 18px 0; }
+.q-block-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; border-radius: 99px; padding: 5px 13px; margin-bottom: 14px;
+}
+.q-block-tag-pip { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.65; }
+.tag-navy  { background: var(--navy-light);  color: var(--navy-mid); }
+.tag-teal  { background: var(--teal-light);  color: var(--teal); }
+.tag-coral { background: var(--coral-light); color: var(--coral); }
+.tag-amber { background: var(--amber-light); color: var(--amber-dark); }
+
+.q-text {
+  font-size: 19px; font-weight: 600; line-height: 1.5;
+  color: var(--text); padding: 0 18px 4px;
+}
+.q-text em { font-style: normal; color: var(--teal); }
+.q-dica { font-size: 13px; color: var(--text-muted); padding: 5px 18px 0; line-height: 1.55; font-weight: 400; }
+.q-multi-note {
+  display: inline-block; background: var(--amber-light); color: var(--amber-dark);
+  font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 99px;
+  margin: 10px 18px 0; letter-spacing: 0.3px;
+}
+
+.q-opts { padding: 14px 14px 18px; display: flex; flex-direction: column; gap: 8px; }
+.q-opt {
+  display: flex; align-items: center; gap: 13px;
+  background: #FAFAF7; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 14px 15px;
+  cursor: pointer; user-select: none;
+  min-height: 56px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s, border-color 0.12s, transform 0.08s;
+  touch-action: manipulation;
+}
+.q-opt:active { transform: scale(0.98); }
+.q-opt.sel-single { background: var(--navy-light); border-color: var(--navy-mid); border-left: 4px solid var(--navy-mid); }
+.q-opt.sel-multi  { background: var(--amber-light); border-color: var(--amber); border-left: 4px solid var(--amber); }
+
+.q-control {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border: 2px solid var(--border-mid);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.12s;
+}
+.q-control.radio { border-radius: 50%; }
+.q-control.checkbox { border-radius: 5px; }
+.q-opt.sel-single .q-control.radio,
+.q-opt.sel-multi  .q-control.checkbox { background: var(--navy-mid); border-color: var(--navy-mid); }
+.q-opt.sel-multi  .q-control.checkbox { background: var(--amber); border-color: var(--amber); }
+.q-ctrl-inner { width: 10px; height: 10px; border-radius: 50%; background: white; opacity: 0; transition: opacity 0.12s; }
+.q-ctrl-check { color: white; font-size: 13px; font-weight: 800; opacity: 0; transition: opacity 0.12s; line-height: 1; }
+.q-opt.sel-single .q-ctrl-inner,
+.q-opt.sel-multi  .q-ctrl-check { opacity: 1; }
+
+.q-opt-label { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.q-opt.sel-single .q-opt-label { color: var(--navy-mid); font-weight: 600; }
+.q-opt.sel-multi  .q-opt-label { color: var(--amber-dark); font-weight: 600; }
+
+.q-nav { display: flex; gap: 10px; padding: 0 14px 18px; }
+.q-btn-back {
+  background: transparent; border: 1.5px solid var(--border-mid);
+  border-radius: 12px; padding: 0 18px; height: 52px;
+  font-size: 15px; font-weight: 600; color: var(--text-mid);
+  cursor: pointer; font-family: var(--font);
+  transition: background 0.12s; white-space: nowrap;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.q-btn-back:disabled { opacity: 0.28; pointer-events: none; }
+.q-btn-next {
+  flex: 1; background: var(--navy); border: none;
+  border-radius: 12px; height: 52px;
+  font-size: 16px; font-weight: 700; color: var(--white);
+  cursor: pointer; font-family: var(--font);
+  box-shadow: 0 4px 16px rgba(12,43,61,0.25);
+  transition: background 0.12s, opacity 0.22s;
+  opacity: 0; pointer-events: none;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.q-btn-next.vis { opacity: 1; pointer-events: all; }
+.q-btn-next:active { filter: brightness(0.9); }
+.q-btn-next.last { background: var(--amber); box-shadow: 0 4px 16px rgba(196,124,24,0.3); }
+
+/* ============================================================
+   TELA DE ANÁLISE
+   ============================================================ */
+#loading-screen {
+  display: none; min-height: 100vh;
+  background: var(--navy);
+  flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 36px 16px 60px;
+}
+#loading-screen.show { display: flex; }
+.ld-wrap { width: 100%; max-width: 600px; }
+
+.ld-header { text-align: center; margin-bottom: 24px; }
+.ld-badge {
+  display: inline-block; background: rgba(34,154,176,0.18);
+  border: 1px solid rgba(34,154,176,0.4); color: var(--teal-mid);
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 15px; border-radius: 99px; margin-bottom: 12px;
+}
+.ld-title { font-size: 22px; font-weight: 700; color: white; line-height: 1.35; margin-bottom: 6px; }
+.ld-sub { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 400; }
+
+.ld-metrics {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 18px; margin-bottom: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.ld-metric-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+.ld-metric-label { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; }
+.ld-metric-pct { font-size: 20px; font-weight: 700; color: white; }
+.ld-metric-track { background: rgba(255,255,255,0.07); border-radius: 99px; height: 5px; overflow: hidden; }
+.ld-metric-fill { height: 100%; border-radius: 99px; width: 0%; transition: width 1.4s cubic-bezier(.4,0,.2,1); }
+.fill-coral { background: linear-gradient(90deg, #BE3D32, #E0604E); }
+.fill-amber { background: linear-gradient(90deg, var(--amber-dark), var(--amber)); }
+.fill-teal  { background: linear-gradient(90deg, var(--teal), var(--teal-mid)); }
+.fill-sage  { background: linear-gradient(90deg, #276047, var(--sage)); }
+
+.ld-data-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px; margin-bottom: 14px;
+  opacity: 0; transition: opacity 0.6s ease;
+}
+.ld-data-card.show { opacity: 1; }
+.ld-data-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 12px; }
+.ld-data-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px; flex-wrap: wrap; }
+.ld-data-row:last-child { border-bottom: none; }
+.ld-dr-key { color: rgba(255,255,255,0.4); flex-shrink: 0; width: 130px; font-weight: 400; }
+.ld-dr-val { color: white; font-weight: 600; flex: 1; min-width: 100px; }
+.ld-dr-flag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; flex-shrink: 0; }
+.flag-warn    { background: rgba(190,61,50,0.2); color: #E5786C; }
+.flag-caution { background: rgba(196,124,24,0.2); color: var(--amber); }
+
+.ld-steps { display: flex; flex-direction: column; gap: 7px; }
+.ld-step {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 11px 14px;
+  opacity: 0.25; transition: opacity 0.4s, border-color 0.4s;
+  font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 400;
+}
+.ld-step.active { opacity: 1; border-color: rgba(34,154,176,0.3); }
+.ld-step.done   { opacity: 1; border-color: rgba(51,120,90,0.3); color: #5AB88A; }
+.ld-step-ico { font-size: 15px; flex-shrink: 0; }
+.ld-step-txt { flex: 1; }
+.ld-step-st { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.ld-step.active .ld-step-st { color: var(--teal-mid); }
+.ld-step.done   .ld-step-st { color: #5AB88A; }
+
+/* ============================================================
+   PÁGINA DE VENDAS
+   ============================================================ */
+#sales-page { display: none; }
+#sales-page.show { display: block; }
+
+.sp-result-bar {
+  background: var(--navy); padding: 10px 18px; text-align: center;
+}
+.sp-rb-inner { max-width: 680px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.sp-rb-badge { font-size: 10px; font-weight: 700; color: var(--teal-mid); background: rgba(34,154,176,0.18); border: 1px solid rgba(34,154,176,0.35); padding: 4px 11px; border-radius: 99px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.sp-rb-text  { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 400; }
+.sp-rb-risk  { font-size: 12px; font-weight: 700; color: #E5786C; white-space: nowrap; }
+
+/* hero VSL */
+.sp-vsl-hero { background: var(--white); padding: 32px 18px 30px; border-bottom: 1px solid var(--border); }
+.sp-vsl-inner { max-width: 680px; margin: 0 auto; }
+.sp-vsl-pre { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber-dark); background: var(--amber-light); display: inline-block; padding: 5px 13px; border-radius: 99px; margin-bottom: 14px; }
+.sp-vsl-title { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
+.sp-vsl-title em { font-style: normal; color: var(--teal); }
+.sp-vsl-sub { font-size: 14px; color: var(--text-mid); line-height: 1.65; font-weight: 400; margin-bottom: 22px; }
+.sp-vsl-sub strong { color: var(--navy); font-weight: 600; }
+
+/* ============================================================
+   PLAYER DE VÍDEO REAL
+   ============================================================ */
+.vsl-outer { position: relative; margin-bottom: 12px; }
+
+/* overlay de play/pause customizado */
+.vsl-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  background: rgba(5,12,20,0.52);
+  transition: opacity 0.25s; cursor: pointer;
+}
+.vsl-overlay.hide { opacity: 0; pointer-events: none; }
+.vsl-ring {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: rgba(196,124,24,0.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 14px rgba(196,124,24,0.2);
+}
+.vsl-play-ico { font-size: 26px; color: white; margin-left: 5px; line-height: 1; }
+.vsl-pause-ico { font-size: 22px; color: white; line-height: 1; }
+.vsl-overlay-lbl { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 500; }
+
+/* barra de progresso — NÃO clicável */
+.vsl-prog-wrap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5px; background: rgba(255,255,255,0.08);
+  pointer-events: none; /* impede qualquer clique/arrastar */
+}
+.vsl-prog-fill { height: 100%; background: var(--amber); width: 0%; }
+
+/* labels */
+.vsl-lbl-top {
+  position: absolute; top: 10px; left: 12px;
+  background: rgba(0,0,0,0.62); color: rgba(255,255,255,0.85);
+  font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px;
+  pointer-events: none;
+}
+.vsl-time-right {
+  position: absolute; top: 10px; right: 12px;
+  background: rgba(0,0,0,0.62); color: rgba(255,255,255,0.85);
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 99px;
+  pointer-events: none;
+}
+
+/* status bar */
+.vsl-status {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 10px; padding: 11px 16px;
+}
+.vsl-status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; background: var(--text-muted); }
+.vsl-status-dot.live { background: var(--coral); animation: pulse 1.2s ease infinite; }
+.vsl-status-dot.done { background: var(--sage); animation: none; }
+@keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.3;} }
+.vsl-status-txt { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-mid); }
+.vsl-status-pct { font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+
+/* ============================================================
+   SEÇÃO BLOQUEADA
+   ============================================================ */
+.sp-locked-wrapper { position: relative; }
+.sp-lock-overlay {
+  position: absolute; inset: 0; z-index: 20;
+  background: rgba(242,237,227,0.93);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; padding: 40px 22px; text-align: center;
+  transition: opacity 0.7s ease;
+  min-height: 200px;
+}
+.sp-lock-overlay.gone { opacity: 0; pointer-events: none; }
+.sp-lock-icon  { font-size: 34px; }
+.sp-lock-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+.sp-lock-sub   { font-size: 13px; color: var(--text-mid); font-weight: 400; line-height: 1.6; max-width: 300px; }
+.sp-lock-bar-wrap { width: 100%; max-width: 260px; background: var(--border); border-radius: 99px; height: 6px; }
+.sp-lock-bar-fill { height: 100%; background: var(--teal); border-radius: 99px; width: 0%; transition: width 0.4s; }
+.sp-lock-pct { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+
+/* toast desbloqueio */
+.sp-toast {
+  display: none; background: var(--sage);
+  padding: 14px 22px; text-align: center;
+}
+.sp-toast.show { display: block; animation: fadeDown 0.45s ease; }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);} }
+.sp-toast-text { font-size: 15px; font-weight: 700; color: white; }
+.sp-toast-sub  { font-size: 12px; color: rgba(255,255,255,0.72); margin-top: 2px; font-weight: 400; }
+
+/* ============================================================
+   SEÇÕES DA PÁGINA DE VENDAS
+   ============================================================ */
+.sp-section { padding: 40px 18px; }
+.sp-section.cream { background: var(--cream); }
+.sp-section.white { background: var(--white); }
+.sp-section.navy  { background: var(--navy); color: white; }
+.sp-inner { max-width: 680px; margin: 0 auto; }
+
+.sp-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 99px; padding: 5px 13px; margin-bottom: 14px; }
+.tag-teal  { background: var(--teal-light); color: var(--teal); }
+.tag-amber { background: var(--amber-light); color: var(--amber-dark); }
+.tag-navy  { background: var(--navy-light); color: var(--navy-mid); }
+.tag-sage  { background: var(--sage-light); color: var(--sage); }
+.tag-white { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); }
+
+.sp-h2 { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.42; margin-bottom: 12px; }
+.sp-h2 em { font-style: normal; color: var(--teal); }
+.sp-h2 .ak { color: var(--amber-dark); }
+.sp-section.navy .sp-h2 { color: white; }
+.sp-lead { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 18px; font-weight: 400; }
+.sp-lead strong { color: var(--navy); font-weight: 600; }
+.sp-section.navy .sp-lead { color: rgba(255,255,255,0.58); }
+.sp-section.navy .sp-lead strong { color: #FFC46A; }
+
+/* depoimentos */
+.tst-grid { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.tst-card { background: var(--white); border-radius: 13px; border: 1px solid var(--border); padding: 18px 18px 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.tst-stars { color: var(--amber); font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
+.tst-quote { font-size: 14px; color: var(--text); line-height: 1.65; margin-bottom: 13px; font-weight: 400; }
+.tst-quote strong { color: var(--navy); font-weight: 600; }
+.tst-foot { display: flex; align-items: center; gap: 10px; }
+.tst-av { width: 40px; height: 40px; border-radius: 50%; background: var(--navy-light); color: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.tst-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+.tst-info { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+.tst-badge { margin-left: auto; background: var(--sage-light); color: var(--sage); font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; white-space: nowrap; }
+
+/* oferta */
+.offer-box { background: var(--white); border-radius: 16px; border: 2px solid var(--navy); padding: 28px 22px; box-shadow: 0 6px 30px rgba(12,43,61,0.1); position: relative; margin-bottom: 18px; }
+.offer-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--amber); color: white; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 18px; border-radius: 99px; white-space: nowrap; }
+.offer-title { font-size: 18px; font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 18px; }
+.offer-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.offer-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); font-weight: 400; }
+.offer-check { width: 22px; height: 22px; border-radius: 50%; background: var(--sage); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+.offer-check.bonus { background: var(--amber); }
+.offer-price { text-align: center; margin-bottom: 18px; }
+.offer-from { font-size: 14px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 3px; font-weight: 400; }
+.offer-now { font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1; }
+.offer-now small { font-size: 20px; font-weight: 600; }
+.offer-note { font-size: 12px; color: var(--text-muted); margin-top: 3px; font-weight: 400; }
+
+.cta-btn {
+  display: block; width: 100%; background: var(--amber); border: none;
+  border-radius: 12px; padding: 18px 22px; text-align: center;
+  text-decoration: none; font-family: var(--font);
+  font-size: 17px; font-weight: 700; color: white;
+  box-shadow: 0 5px 22px rgba(196,124,24,0.3);
+  transition: background 0.12s; cursor: pointer;
+  min-height: 56px; touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.cta-btn:active { filter: brightness(0.88); }
+.offer-secure { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 12px; color: var(--text-muted); margin-top: 12px; font-weight: 400; }
+
+/* garantia */
+.guarantee-box { background: var(--sage-light); border: 1px solid rgba(51,120,90,0.2); border-radius: 13px; padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+.guarantee-seal { width: 64px; height: 64px; border-radius: 50%; background: var(--sage); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 12px rgba(51,120,90,0.26); }
+.gs-days { font-size: 20px; font-weight: 800; line-height: 1; }
+.gs-lbl  { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.guarantee-title { font-size: 15px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
+.guarantee-text  { font-size: 13px; color: var(--text-mid); line-height: 1.6; font-weight: 400; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 11px; overflow: hidden; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 15px 18px; cursor: pointer; gap: 10px; font-size: 14px; font-weight: 600; color: var(--navy); touch-action: manipulation; -webkit-tap-highlight-color: transparent; min-height: 52px; }
+.faq-arrow { font-size: 16px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { font-size: 14px; color: var(--text-mid); line-height: 1.65; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; padding: 0 18px; font-weight: 400; }
+.faq-item.open .faq-a { max-height: 280px; padding: 0 18px 15px; }
+
+/* rodapé */
+.sp-final { background: var(--navy); padding: 44px 18px; text-align: center; padding-bottom: calc(44px + var(--safe-bottom)); }
+.sp-final-inner { max-width: 520px; margin: 0 auto; }
+.sp-final-h { font-size: 23px; font-weight: 700; color: white; line-height: 1.4; margin-bottom: 10px; }
+.sp-final-h em { font-style: normal; color: #FFC46A; }
+.sp-final-sub { font-size: 14px; color: rgba(255,255,255,0.52); line-height: 1.65; margin-bottom: 24px; font-weight: 400; }
+.sp-footer-note { margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; }
+
+@keyframes ctaAppear { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 400px) {
+  .q-text { font-size: 17px; }
+  .sp-vsl-title { font-size: 19px; }
+  .sp-h2 { font-size: 19px; }
+  .offer-now { font-size: 36px; }
+  .ld-metrics { grid-template-columns: 1fr; }
+  .ld-dr-key { width: 100px; }
+}
+@media (max-width: 360px) {
+  .sp-rb-inner { flex-direction: column; gap: 4px; }
+  .guarantee-box { flex-direction: column; align-items: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA DE PROGRESSO -->
+<div id="top-bar">
+  <div class="tb-inner">
+    <div class="tb-row">
+      <div class="tb-logo"><div class="tb-logo-dot"></div>Diagnóstico Articular</div>
+      <div class="tb-spacer"></div>
+      <div class="tb-counter" id="tb-counter">Pergunta 1 de 17</div>
+    </div>
+    <div class="tb-track"><div class="tb-fill" id="tb-fill" style="width:6%"></div></div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz-wrap"><div id="quiz-area"></div></div>
+
+<!-- ANÁLISE -->
+<div id="loading-screen">
+  <div class="ld-wrap">
+    <div class="ld-header">
+      <div class="ld-badge">Análise Clínica em Andamento</div>
+      <div class="ld-title">Processando seu perfil articular</div>
+      <div class="ld-sub">Cruzando suas respostas com padrões clínicos de compressão noturna</div>
+    </div>
+    <div class="ld-metrics">
+      <div class="ld-metric"><div class="ld-metric-top"><span class="ld-metric-label">Compressão Articular</span><span class="ld-metric-pct" id="mp1">0%</span></div><div class="ld-metric-track"><div class="ld-metric-fill fill-coral" id="mf1"></div></div></div>
+      <div class="ld-metric"><div class="ld-metric-top"><span class="ld-metric-label">Risco de Progressão</span><span class="ld-metric-pct" id="mp2">0%</span></div><div class="ld-metric-track"><div class="ld-metric-fill fill-amber" id="mf2"></div></div></div>
+      <div class="ld-metric"><div class="ld-metric-top"><span class="ld-metric-label">Eficácia Tratamentos</span><span class="ld-metric-pct" id="mp3">0%</span></div><div class="ld-metric-track"><div class="ld-metric-fill fill-teal" id="mf3"></div></div></div>
+      <div class="ld-metric"><div class="ld-metric-top"><span class="ld-metric-label">Urgência de Intervenção</span><span class="ld-metric-pct" id="mp4">0%</span></div><div class="ld-metric-track"><div class="ld-metric-fill fill-sage" id="mf4"></div></div></div>
+    </div>
+    <div class="ld-data-card" id="ld-data-card">
+      <div class="ld-data-title">Dados do Seu Perfil Detectados</div>
+      <div class="ld-data-row"><span class="ld-dr-key">Articulações</span><span class="ld-dr-val" id="dd-joints">—</span><span class="ld-dr-flag flag-warn">Atenção</span></div>
+      <div class="ld-data-row"><span class="ld-dr-key">Posição ao dormir</span><span class="ld-dr-val" id="dd-sleep">—</span><span class="ld-dr-flag flag-warn">Agravante</span></div>
+      <div class="ld-data-row"><span class="ld-dr-key">Tempo de evolução</span><span class="ld-dr-val" id="dd-duration">—</span><span class="ld-dr-flag flag-caution">Crônico</span></div>
+      <div class="ld-data-row"><span class="ld-dr-key">Apoio noturno</span><span class="ld-dr-val" id="dd-support">—</span><span class="ld-dr-flag flag-caution" id="dd-sup-flag">—</span></div>
+    </div>
+    <div class="ld-steps">
+      <div class="ld-step" id="ls1"><span class="ld-step-ico">🔬</span><span class="ld-step-txt">Mapeando padrão de postura noturna</span><span class="ld-step-st" id="ls1-st">Aguardando</span></div>
+      <div class="ld-step" id="ls2"><span class="ld-step-ico">🦴</span><span class="ld-step-txt">Calculando índice de compressão articular</span><span class="ld-step-st" id="ls2-st">Aguardando</span></div>
+      <div class="ld-step" id="ls3"><span class="ld-step-ico">📊</span><span class="ld-step-txt">Cruzando histórico de tratamentos</span><span class="ld-step-st" id="ls3-st">Aguardando</span></div>
+      <div class="ld-step" id="ls4"><span class="ld-step-ico">📋</span><span class="ld-step-txt">Gerando laudo personalizado</span><span class="ld-step-st" id="ls4-st">Aguardando</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PÁGINA DE VENDAS -->
+<div id="sales-page">
+
+  <div class="sp-result-bar">
+    <div class="sp-rb-inner">
+      <div class="sp-rb-badge">✦ Laudo Concluído</div>
+      <div class="sp-rb-text">Compressão Gravitacional Noturna Crônica</div>
+      <div class="sp-rb-risk">Risco: 87%</div>
+    </div>
+  </div>
+
+  <!-- VSL -->
+  <div class="sp-vsl-hero">
+    <div class="sp-vsl-inner">
+      <div class="sp-vsl-pre">Protocolo Liberado para o Seu Perfil</div>
+      <h1 class="sp-vsl-title">Assista ao vídeo antes de <em>acessar o protocolo</em></h1>
+      <p class="sp-vsl-sub">Em poucos minutos você vai entender por que nenhum tratamento chegou à <strong>raiz da sua dor</strong> — e o único ajuste que muda tudo.</p>
+
+      <!-- VTurb Player — embed exato gerado pela plataforma -->
+      <vturb-smartplayer id="vid-6a19840bb7169516c91f433c" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+    </div>
+  </div>
+
+</div><!-- /sales-page -->
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ============================================================
+   FEEDBACK SONORO E TÁTIL — clique nas opções
+   ============================================================ */
+let audioCtx = null;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function playTick() {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(520, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.055);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.09);
+  } catch(e) {}
+}
+
+function vibrar(ms) {
+  try { if (navigator.vibrate) navigator.vibrate(ms || 8); } catch(e) {}
+}
+
+function feedback() { playTick(); vibrar(8); }
+
+/* ============================================================
+   PERGUNTAS DO QUIZ
+   ============================================================ */
+const PERGUNTAS = [
+  { bloco:"Bloco 1 — Perfil Inicial", tagCor:"navy", texto:"Qual é a sua faixa etária?", dica:null, multi:false,
+    opcoes:[{label:"Entre 40 e 50 anos"},{label:"Entre 51 e 60 anos"},{label:"Entre 61 e 70 anos"},{label:"Mais de 70 anos"}]},
+  { bloco:"Bloco 1 — Perfil Inicial", tagCor:"navy", texto:"Qual articulação te causa <em>mais desconforto</em>?", dica:null, multi:true,
+    opcoes:[{label:"Lombar — região das costas na cintura"},{label:"Joelhos — um ou os dois"},{label:"Quadril — virilha ou lateral"},{label:"Cervical — nuca e pescoço"}]},
+  { bloco:"Bloco 1 — Perfil Inicial", tagCor:"navy", texto:"Com que frequência você sente dor <em>ao acordar de manhã</em>?", dica:null, multi:false,
+    opcoes:[{label:"Às vezes — em dias mais frios ou após esforço"},{label:"Com frequência — na maioria das manhãs"},{label:"Quase sempre — independentemente do dia anterior"},{label:"Todos os dias — é a primeira sensação ao abrir os olhos"}]},
+  { bloco:"Bloco 1 — Perfil Inicial", tagCor:"navy", texto:"Há quanto tempo essa dor faz parte da sua rotina?", dica:null, multi:false,
+    opcoes:[{label:"Faz alguns meses — está começando a preocupar"},{label:"Há cerca de 1 a 2 anos"},{label:"Há mais de 3 anos — já me acostumei, mas incomoda muito"},{label:"Há mais de 5 anos — parece que sempre foi assim"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Em qual posição você <em>geralmente dorme</em> a maior parte da noite?", dica:"Essa é a informação mais importante do seu diagnóstico.", multi:false,
+    opcoes:[{label:"De lado — joelhos levemente dobrados (posição fetal)"},{label:"De costas — pernas esticadas"},{label:"De bruços — barriga para baixo"},{label:"Mudo muito — não tenho posição fixa"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Você usa algum <em>apoio entre os joelhos</em> enquanto dorme?", dica:"Travesseiro, almofada ou coxim entre as pernas.", multi:false,
+    opcoes:[{label:"Nunca usei — não sabia que faz diferença"},{label:"Já tentei, mas tiro no meio da noite"},{label:"Às vezes, quando a dor está intensa"},{label:"Uso regularmente — mas a dor continua"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Como você descreveria seu <em>colchão atual</em>?", dica:"O tipo interfere diretamente na pressão das articulações.", multi:false,
+    opcoes:[{label:"Muito mole — afunda bastante quando deito"},{label:"Muito duro — sinto pressão nos pontos de apoio"},{label:"Médio — parece razoável, mas a dor continua"},{label:"Não sei ao certo — nunca pensei nisso"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Você percebe <em>diferença na dor</em> dependendo de como acordou posicionado?", dica:null, multi:false,
+    opcoes:[{label:"Sim — certas posições pioram, outras aliviam um pouco"},{label:"Talvez — nunca prestei atenção nisso"},{label:"Sim, mas independente de como durmo a dor está sempre lá"},{label:"Não percebo padrão — é totalmente imprevisível"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Quanto tempo leva até a dor <em>diminuir após se levantar</em> da cama?", dica:"Esse dado indica o grau de compressão articular acumulada.", multi:false,
+    opcoes:[{label:"Melhora logo nos primeiros minutos"},{label:"Leva 15 a 30 minutos para melhorar um pouco"},{label:"Fico rígido por 1 hora ou mais após acordar"},{label:"Melhora de manhã mas volta com força ao longo do dia"}]},
+  { bloco:"Bloco 2 — Hábitos de Sono", tagCor:"teal", texto:"Como está a <em>qualidade do seu sono</em> nos últimos meses?", dica:null, multi:false,
+    opcoes:[{label:"Durmo razoavelmente — mas acordo com dor mesmo assim"},{label:"Durmo mal — a dor me acorda durante a noite"},{label:"Durmo muito mal — fico tentando achar posição"},{label:"Mal consigo dormir — o desconforto é constante"}]},
+  { bloco:"Bloco 3 — Impacto na Sua Vida", tagCor:"coral", texto:"Como essa dor interfere nas suas <em>atividades do dia a dia</em>?", dica:null, multi:true,
+    opcoes:[{label:"Dificulta caminhar ou subir escadas"},{label:"Não consigo ficar em pé por muito tempo"},{label:"Dor ao levantar de cadeiras, sofás ou sanitário"},{label:"Evito praticamente qualquer atividade por causa da dor"}]},
+  { bloco:"Bloco 3 — Impacto na Sua Vida", tagCor:"coral", texto:"Como essa dor afeta sua <em>vida social e seus planos</em>?", dica:null, multi:false,
+    opcoes:[{label:"Já recusei passeios por medo de sentir dor"},{label:"Tenho dificuldade de acompanhar minha família"},{label:"Viagens e lazer ficaram mais raros"},{label:"Minha vida social foi bastante reduzida"}]},
+  { bloco:"Bloco 3 — Impacto na Sua Vida", tagCor:"coral", texto:"O que você já fez para tentar <em>resolver essa dor</em>?", dica:null, multi:true,
+    opcoes:[{label:"Anti-inflamatórios e analgésicos — alivia pouco e volta"},{label:"Fisioterapia ou ortopedista — melhorou um pouco, mas não resolveu"},{label:"Exercícios e alongamentos — difícil manter com a dor"},{label:"Acupuntura, quiropraxia ou outros métodos"}]},
+  { bloco:"Bloco 3 — Impacto na Sua Vida", tagCor:"coral", texto:"Como está seu nível de <em>frustração</em> com os tratamentos que já tentou?", dica:null, multi:false,
+    opcoes:[{label:"Um pouco frustrado — ainda tenho esperança"},{label:"Moderadamente frustrado — já gastei sem resultado duradouro"},{label:"Muito frustrado — parece que nada funciona para mim"},{label:"Extremamente frustrado — quase desisti de encontrar solução"}]},
+  { bloco:"Bloco 4 — Seu Comprometimento", tagCor:"amber", texto:"Qual é o seu <em>nível de urgência</em> para resolver essa dor?", dica:null, multi:false,
+    opcoes:[{label:"Tenho interesse — mas sem pressa imediata"},{label:"É importante — gostaria de resolver nos próximos meses"},{label:"É urgente — a dor está limitando demais minha vida agora"},{label:"É emergência — preciso de alívio o quanto antes"}]},
+  { bloco:"Bloco 4 — Seu Comprometimento", tagCor:"amber", texto:"Quanto tempo você dedicaria <em>por dia</em> a uma solução que funcionasse?", dica:"Esse dado indica o protocolo mais adequado para o seu caso.", multi:false,
+    opcoes:[{label:"Menos de 5 minutos — precisa ser prático sem esforço"},{label:"Até 15 minutos — se for comprovado que funciona"},{label:"Até 30 minutos — vale o esforço se der resultado real"},{label:"O tempo que for necessário — estou decidido a resolver"}]},
+  { bloco:"Bloco 4 — Seu Comprometimento", tagCor:"amber", texto:"Se você acordasse <em>sem dor nos próximos 7 dias</em>, o que mudaria?", dica:"Essa é a última pergunta do seu diagnóstico.", multi:false,
+    opcoes:[{label:"Voltaria a dormir bem e acordar com energia"},{label:"Recuperaria minha independência para ir e vir"},{label:"Poderia voltar a aproveitar o tempo com minha família"},{label:"Mudaria absolutamente tudo — seria um recomeço"}]}
+];
+
+/* ============================================================
+   ESTADO DO QUIZ
+   ============================================================ */
+let atual = 0;
+const respostas = new Array(PERGUNTAS.length).fill(null);
+
+function render() {
+  const p = PERGUNTAS[atual];
+  const pct = Math.round(((atual+1)/PERGUNTAS.length)*100);
+  document.getElementById('tb-fill').style.width = pct+'%';
+  document.getElementById('tb-counter').textContent = 'Pergunta '+(atual+1)+' de '+PERGUNTAS.length;
+  const r = respostas[atual];
+  const sel = r!==null ? (Array.isArray(r)?r:[r]) : [];
+  const canGo = sel.length > 0;
+  const isLast = atual === PERGUNTAS.length-1;
+
+  document.getElementById('quiz-area').innerHTML = `
+    <div class="q-card">
+      <div class="q-block-row">
+        <div class="q-block-tag tag-${p.tagCor}"><div class="q-block-tag-pip"></div>${p.bloco}</div>
+      </div>
+      <div class="q-text">${p.texto}</div>
+      ${p.dica?`<div class="q-dica">${p.dica}</div>`:''}
+      ${p.multi?`<div class="q-multi-note">Selecione uma ou mais opções</div>`:''}
+      <div class="q-opts">${p.opcoes.map((o,i)=>{
+        const s = sel.includes(i);
+        const sc = s?(p.multi?'sel-multi':'sel-single'):'';
+        const ct = p.multi?'checkbox':'radio';
+        const inner = p.multi
+          ? `<span class="q-ctrl-check">${s?'✓':''}</span>`
+          : `<div class="q-ctrl-inner"></div>`;
+        return `<div class="q-opt ${sc}" onclick="pick(${i})">
+          <div class="q-control ${ct}">${inner}</div>
+          <div class="q-opt-label">${o.label}</div>
+        </div>`;
+      }).join('')}</div>
+      <div class="q-nav">
+        <button class="q-btn-back" onclick="voltar()" ${atual===0?'disabled':''}>← Voltar</button>
+        <button class="q-btn-next${canGo?' vis':''}${isLast?' last':''}" onclick="avancar()">
+          ${isLast?'Ver Meu Diagnóstico →':'Próxima Pergunta →'}
+        </button>
+      </div>
+    </div>`;
+}
+
+function pick(i) {
+  feedback(); // som + vibração
+  const p = PERGUNTAS[atual];
+  if (p.multi) {
+    let arr = Array.isArray(respostas[atual]) ? [...respostas[atual]] : [];
+    const idx = arr.indexOf(i);
+    if (idx>-1) arr.splice(idx,1); else arr.push(i);
+    respostas[atual] = arr.length?arr:null;
+  } else { respostas[atual] = i; }
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function avancar() {
+  const r = respostas[atual];
+  if (!r && r!==0) return;
+  if (Array.isArray(r) && !r.length) return;
+  feedback();
+  atual++;
+  if (atual<PERGUNTAS.length) { render(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else iniciarAnalise();
+}
+
+function voltar() {
+  if (!atual) return;
+  feedback();
+  atual--; render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============================================================
+   ANÁLISE
+   ============================================================ */
+function iniciarAnalise() {
+  document.getElementById('quiz-wrap').classList.add('hidden');
+  document.getElementById('top-bar').classList.add('hidden');
+  document.getElementById('loading-screen').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  function getLabel(qi) {
+    const r = respostas[qi];
+    if (r===null||r===undefined) return '—';
+    if (Array.isArray(r)) return r.map(i=>PERGUNTAS[qi].opcoes[i].label).join(', ');
+    return PERGUNTAS[qi].opcoes[r]?.label||'—';
+  }
+  document.getElementById('dd-joints').textContent   = getLabel(1);
+  document.getElementById('dd-sleep').textContent    = getLabel(4);
+  document.getElementById('dd-duration').textContent = getLabel(3);
+  document.getElementById('dd-support').textContent  = getLabel(5);
+  const sf = document.getElementById('dd-sup-flag');
+  const sv = respostas[5];
+  sf.textContent = sv===0?'Agravante':sv===3?'Atenção':'Parcial';
+  sf.className = 'ld-dr-flag '+(sv===0?'flag-warn':'flag-caution');
+
+  [{p:'mp1',b:'mf1',t:82},{p:'mp2',b:'mf2',t:87},{p:'mp3',b:'mf3',t:24},{p:'mp4',b:'mf4',t:91}]
+  .forEach((m,i)=>setTimeout(()=>{
+    document.getElementById(m.b).style.width=m.t+'%';
+    let n=0; const iv=setInterval(()=>{n+=1;if(n>=m.t){n=m.t;clearInterval(iv);}document.getElementById(m.p).textContent=n+'%';},16);
+  },300+i*700));
+
+  [['ls1','ls1-st'],['ls2','ls2-st'],['ls3','ls3-st'],['ls4','ls4-st']].forEach(([id,st],i)=>{
+    setTimeout(()=>{
+      if(i>0){const pv=[['ls1','ls1-st'],['ls2','ls2-st'],['ls3','ls3-st'],['ls4','ls4-st']][i-1];document.getElementById(pv[0]).className='ld-step done';document.getElementById(pv[1]).textContent='Concluído';}
+      document.getElementById(id).className='ld-step active';document.getElementById(st).textContent='Processando...';
+    },[200,1900,3600,5300][i]);
+  });
+
+  setTimeout(()=>document.getElementById('ld-data-card').classList.add('show'),3200);
+  setTimeout(()=>{document.getElementById('ls4').className='ld-step done';document.getElementById('ls4-st').textContent='Concluído';},7000);
+  setTimeout(()=>{
+    document.getElementById('loading-screen').classList.remove('show');
+    document.getElementById('sales-page').classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },8500);
+}
+
+render();
+
+</script>
+</body>
+</html>
